@@ -25,7 +25,7 @@
 import java.util.*;
 public class LongestIncreasing{
     public static int answer = 0;
-    public static void helper(int[] nums,int n,int idx,int count,List<Integer> temp){
+    public static void helper(int[] nums,int n,int idx,List<Integer> temp){
         if(idx==n){
             answer = Math.max(answer,temp.size());
             return;
@@ -33,23 +33,25 @@ public class LongestIncreasing{
         for(int i=idx;i<n;i++){
             if(temp.size()==0 || nums[i]>temp.get(temp.size()-1)){
                 temp.add(nums[i]);
-                helper(nums,n,i+1,count+1,temp);
+                helper(nums,n,i+1,temp);
                 temp.remove(temp.size()-1);
             }
-            helper(nums,n,i+1,count,temp);
+            helper(nums,n,i+1,temp);
         }
 
 
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
+        String[] str = sc.nextLine().split(" ");
+        int n = str.length;;
         int[] nums = new int[n];
         for(int i=0; i<n; i++){
-            nums[i] = sc.nextInt();
+            nums[i] = Integer.parseInt(str[i]);
         }
         List<Integer> temp = new ArrayList<>();
-        helper(nums,n,0,0,temp);
+        helper(nums,n,0,temp);
         System.out.println(answer);
+        sc.close();
     }
 }
