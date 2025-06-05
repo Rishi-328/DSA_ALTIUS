@@ -28,7 +28,7 @@
 
 
 import java.util.*;
-public class Program2{
+public class Palindrome{
     public static boolean check(String str){
         int n = str.length();
         for(int i=0;i<n/2;i++){
